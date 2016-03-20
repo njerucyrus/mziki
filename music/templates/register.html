@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+</head>
+<body>
+  {% block content %}
+  <div class="col col-md-6">
+    <h1> Register With HITS254</h1>
+    {%if registered %}
+    HITS254 Says: <strong> Thank you for registering! </strong>
+    {%else%}
+    HITS254 says: <strong>register here!</strong><br />
+    <form action="" method="POST">
+        {%csrf_token%}
+        {{ user_ac_form | crispy }}
+        {{ user_form| crispy }}
+        <input type="submit" value="Create Account" class="btn btn-success">
+    </form>
+  </div>
+    {% endif %}
+  {% endblock %}
+</body>
+</html>
